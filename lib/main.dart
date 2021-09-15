@@ -32,12 +32,12 @@ class MyHomePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //TODO: 通知
     useEffect((){});
-    return Tab();
+    return MyTab();
   }
 
 }
 
-class Tab extends StatelessWidget {
+class MyTab extends StatelessWidget {
   final PersistentTabController _controller =
   PersistentTabController(initialIndex: 0);
 

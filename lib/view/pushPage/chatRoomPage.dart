@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoomPage extends StatelessWidget {
-  const ChatRoomPage({Key? key}) : super(key: key);
+  ChatRoomPage({required friendName});
 
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "891669820320",
+    "project_id": "chat-re-a925a",
+    "storage_bucket": "chat-re-a925a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891669820320:android:3eb442d43f532e34b6aac5",
+        "android_client_info": {
+          "package_name": "com.example.chat_re"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891669820320-a52q9r613lkcfjskl4642122p8mne2oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN7TlhVw8RKAj7PjpUAtsqJOvg4DziYCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891669820320-a52q9r613lkcfjskl4642122p8mne2oe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "891669820320-97bmhqdhgbkki6crik7bgkt7bm5lbi1c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatRe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

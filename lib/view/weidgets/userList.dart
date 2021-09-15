@@ -1,14 +1,12 @@
 import 'package:chat_re/objects/chatroom.dart';
 import 'package:chat_re/view/pushPage/chatRoomPage.dart';
+import 'package:chat_re/view/weidgets/chatRoomList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-///dammy url
-String toriUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.sapporo-park.or.jp%2Fasahiyama%2F%3Fpage_id%3D2386&psig=AOvVaw1TUfrLWiXbaBsdZh8CDs69&ust=1631771267685000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLCXu-ijgPMCFQAAAAAdAAAAABAD';
-
-Widget chatRoomList(
+Widget userList(
     {required BuildContext context,
-    required List<ChatRoom> chatRoomList,
+    required List<ChatRoom> userList,
     required int index}) {
   return Container(
     height: 10.0,
@@ -20,8 +18,8 @@ Widget chatRoomList(
             context,
             MaterialPageRoute(
                 builder: (context) => ChatRoomPage(
-                  friendName: chatRoomList[index].friendName!,
-                )));
+                      friendName: userList[index].friendName!,
+                    )));
       },
       child: Card(
         shape:
@@ -34,9 +32,9 @@ Widget chatRoomList(
               padding: const EdgeInsets.all(8.0),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    chatRoomList[index].friendIconUrl! == ''
+                    userList[index].friendIconUrl! == ''
                         ? toriUrl
-                        : chatRoomList[index].friendIconUrl!),
+                        : userList[index].friendIconUrl!),
               ),
             ),
             Column(
@@ -46,7 +44,7 @@ Widget chatRoomList(
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 0.0, vertical: 8.0),
-                  child: Text(chatRoomList[index].friendName!),
+                  child: Text(userList[index].friendName!),
                 ),
                 //TODO: ダミー
                 Padding(
