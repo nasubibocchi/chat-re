@@ -18,6 +18,7 @@ Widget userList(
             context,
             MaterialPageRoute(
                 builder: (context) => ChatRoomPage(
+                      friendId: userList[index].friendUid!,
                       friendName: userList[index].friendName!,
                     )));
       },

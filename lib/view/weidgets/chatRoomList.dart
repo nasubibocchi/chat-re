@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ///dammy url
-String toriUrl = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.sapporo-park.or.jp%2Fasahiyama%2F%3Fpage_id%3D2386&psig=AOvVaw1TUfrLWiXbaBsdZh8CDs69&ust=1631771267685000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLCXu-ijgPMCFQAAAAAdAAAAABAD';
+String toriUrl =
+    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.sapporo-park.or.jp%2Fasahiyama%2F%3Fpage_id%3D2386&psig=AOvVaw1TUfrLWiXbaBsdZh8CDs69&ust=1631771267685000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLCXu-ijgPMCFQAAAAAdAAAAABAD';
 
 Widget chatRoomList(
     {required BuildContext context,
@@ -20,8 +21,9 @@ Widget chatRoomList(
             context,
             MaterialPageRoute(
                 builder: (context) => ChatRoomPage(
-                  friendName: chatRoomList[index].friendName!,
-                )));
+                      friendId: chatRoomList[index].friendUid!,
+                      friendName: chatRoomList[index].friendName!,
+                    )));
       },
       child: Card(
         shape:

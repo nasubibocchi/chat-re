@@ -23,12 +23,12 @@ class UserListPage extends StatelessWidget {
           if (snapshot.hasError) {
             return Text(snapshot.error.toString());
           } else if (!snapshot.hasData) {
-            return const Center(
-              child: const CircularProgressIndicator(),
-            );
-          } else if (snapshot.data!.docs.isEmpty) {
             return Center(
               child: Text('見つかりませんでした'),
+            );
+          } else if (snapshot.data!.docs.isEmpty) {
+            return const Center(
+              child: const CircularProgressIndicator(),
             );
           } else {
             return ListView.builder(

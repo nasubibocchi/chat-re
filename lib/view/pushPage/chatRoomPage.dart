@@ -1,4 +1,6 @@
+import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/objects/message.dart';
+import 'package:chat_re/simplemodel/firestoreModel.dart';
 import 'package:chat_re/view/weidgets/messageList.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,13 +8,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoomPage extends StatelessWidget {
-  ChatRoomPage({required friendName});
+  ChatRoomPage({required this.friendId, required this.friendName});
+
+  String friendId;
+  String friendName;
 
   @override
   Widget build(BuildContext context) {
     ///firebase呼び出し用
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     FirebaseAuth auth = FirebaseAuth.instance;
+
+    ///モデル
+    final _firestoreModel = FirestoreModel();
 
     ///テキストコントローラ
     TextEditingController _messageController = TextEditingController();
@@ -22,8 +30,7 @@ class ChatRoomPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        //TODO: ダミー
-        title: Text('ダミー'),
+        title: Text(friendName, style: TextStyle(color: kTextColour)),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -40,12 +47,12 @@ class ChatRoomPage extends StatelessWidget {
                   if (snapshot.hasError) {
                     return Text(snapshot.error.toString());
                   } else if (!snapshot.hasData) {
-                    return const Center(
-                      child: const CircularProgressIndicator(),
-                    );
-                  } else if (snapshot.data!.docs.isEmpty) {
                     return Center(
                       child: Text('ユーザーを探してみよう'),
+                    );
+                  } else if (snapshot.data!.docs.isEmpty) {
+                    return const Center(
+                      child: const CircularProgressIndicator(),
                     );
                   } else {
                     final _newSnapshot =
@@ -71,8 +78,13 @@ class ChatRoomPage extends StatelessWidget {
                   },
                 ),
                 IconButton(
-                  //TODO: ボタンを押したらfirebase（自分と相手）のmessageにデータを保存する
-                  onPressed: (){},
+                  ///ボタンを押したらfirebase（自分と相手）のmessageにデータを保存する
+                  onPressed: () {
+                    _firestoreModel.postMessage(
+                        friendId: friendId,
+                        friendName: friendName,
+                        message: _messageText);
+                  },
                   icon: Icon(Icons.send),
                 ),
               ],

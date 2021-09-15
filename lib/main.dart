@@ -1,6 +1,7 @@
 import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/view/chatRoomListPage.dart';
 import 'package:chat_re/view/loginPage.dart';
+import 'package:chat_re/view/serchUserHome.dart';
 import 'package:chat_re/view/serchUserPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -47,7 +48,7 @@ class MyTab extends StatelessWidget {
     return [
       SerchUserPage(),
       StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
+        stream: _auth.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -66,13 +67,13 @@ class MyTab extends StatelessWidget {
     return [
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.person_search),
-        activeColorPrimary: kTextColour,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        activeColorPrimary: kAccentColour,
+        inactiveColorPrimary: kNuanceColour,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.chat_outlined),
-        activeColorPrimary: kTextColour,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        activeColorPrimary: kAccentColour,
+        inactiveColorPrimary: kNuanceColour,
       ),
     ];
   }
