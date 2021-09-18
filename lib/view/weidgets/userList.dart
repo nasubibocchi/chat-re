@@ -47,11 +47,6 @@ Widget userList(
                       horizontal: 0.0, vertical: 8.0),
                   child: Text(userList[index].userName!),
                 ),
-                //TODO: ダミー
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
-                  child: Text('ダミー'),
-                ),
               ],
             ),
           ],
