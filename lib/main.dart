@@ -1,7 +1,6 @@
 import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/view/chatRoomListPage.dart';
 import 'package:chat_re/view/loginPage.dart';
-import 'package:chat_re/view/serchUserHome.dart';
 import 'package:chat_re/view/serchUserPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';

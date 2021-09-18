@@ -30,6 +30,7 @@ class ChatRoomPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kBaseColour,
         title: Text(friendName, style: TextStyle(color: kTextColour)),
       ),
       body: Column(
@@ -42,52 +43,75 @@ class ChatRoomPage extends StatelessWidget {
                     .collection('users')
                     .doc(auth.currentUser!.uid)
                     .collection('chatroom')
+                    .doc(friendId)
+                    .collection('message')
                     .snapshots(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
                     return Text(snapshot.error.toString());
                   } else if (!snapshot.hasData) {
-                    return Center(
-                      child: Text('ユーザーを探してみよう'),
-                    );
-                  } else if (snapshot.data!.docs.isEmpty) {
                     return const Center(
                       child: const CircularProgressIndicator(),
                     );
+                  } else if (snapshot.data!.docs.isEmpty) {
+                    return Center(
+                      child: Text('最初のメッセージを送信してみてね'),
+                    );
                   } else {
-                    final _newSnapshot =
+                    List<Message> _newSnapshot =
                         snapshot.data!.docs.map((e) => Message(e)).toList();
                     return ListView.builder(
+                        itemCount: _newSnapshot.length,
                         itemBuilder: (BuildContext context, int index) {
-                      return messageList(
-                          context: context,
-                          messageList: _newSnapshot,
-                          index: index);
-                    });
+                          return messageList(
+                              context: context,
+                              messageList: _newSnapshot,
+                              index: index);
+                        });
                   }
                 }),
           ),
           Expanded(
             flex: 1,
-            child: Row(
-              children: [
-                TextField(
-                  controller: _messageController,
-                  onChanged: (text) {
-                    _messageText = text;
-                  },
-                ),
-                IconButton(
-                  ///ボタンを押したらfirebase（自分と相手）のmessageにデータを保存する
-                  onPressed: () {
-                    _firestoreModel.postMessage(
-                        friendId: friendId,
-                        friendName: friendName,
-                        message: _messageText);
-                  },
-                  icon: Icon(Icons.send),
-                ),
-              ],
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: kNuanceColour),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 8,
+                    child: TextField(
+                      controller: _messageController,
+                      onChanged: (text) {
+                        _messageText = text;
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: IconButton(
+                      ///ボタンを押したらfirebase（自分と相手）のmessageにデータを保存する
+                      onPressed: () {
+                        _firestoreModel.postMessage(
+                            friendId: friendId,
+                            friendName: friendName,
+                            message: _messageText);
+
+                        _firestoreModel.setFriendList(
+                            friendId: friendId,
+                            friendName: friendName,
+                            message: _messageText);
+                      },
+                      icon: Icon(
+                        Icons.send,
+                        color: kAccentColour,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

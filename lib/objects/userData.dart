@@ -6,7 +6,7 @@ class UserData {
     userName = _extracted['userName'];
     userId = _extracted['userId'];
     iconUrl = _extracted['iconUrl'];
-    signInAt = _extracted['signInAt'];
+    signInAt = _extracted['signInAt'].toDate();
   }
   String? userName;
   String? userId;

@@ -6,8 +6,10 @@ class ChatRoom {
     friendName = _extracted['friendName'];
     friendUid = _extracted['friendId'];
     friendIconUrl = _extracted['friendIconUrl'];
+    message = _extracted['message'];
   }
   String? friendName;
   String? friendUid;
   String? friendIconUrl;
+  String? message;
 }

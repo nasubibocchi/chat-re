@@ -46,6 +46,9 @@ class SerchUserPage extends HookConsumerWidget {
                   print(userName);
                 },
               ),
+              SizedBox(
+                height: 40.0,
+              ),
               MaterialButton(
                 onPressed: () {
                   print(userName);

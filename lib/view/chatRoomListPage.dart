@@ -24,7 +24,8 @@ class ChatRoomListPage extends StatelessWidget {
               .doc(auth.currentUser!.uid)
               .collection('chatroom')
               .snapshots(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
               return Text(snapshot.error.toString());
             } else if (!snapshot.hasData) {
@@ -39,10 +40,13 @@ class ChatRoomListPage extends StatelessWidget {
               final _newSnapshot =
                   snapshot.data!.docs.map((e) => ChatRoom(e)).toList();
               return ListView.builder(
+                  itemCount: _newSnapshot.length,
                   itemBuilder: (BuildContext context, int index) {
-                return chatRoomList(
-                    context: context, chatRoomList: _newSnapshot, index: index);
-              });
+                    return chatRoomList(
+                        context: context,
+                        chatRoomList: _newSnapshot,
+                        index: index);
+                  });
             }
           }),
     );

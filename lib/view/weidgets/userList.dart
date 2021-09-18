@@ -1,4 +1,4 @@
-import 'package:chat_re/objects/chatroom.dart';
+import 'package:chat_re/objects/userData.dart';
 import 'package:chat_re/view/pushPage/chatRoomPage.dart';
 import 'package:chat_re/view/weidgets/chatRoomList.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 Widget userList(
     {required BuildContext context,
-    required List<ChatRoom> userList,
+    required List<UserData> userList,
     required int index}) {
   return Container(
-    height: 10.0,
-    width: 30.0,
+    height: 130.0,
+    width: 500.0,
     child: InkWell(
       /// カードをタップしたらチャットルームに移動する
       onTap: () {
@@ -18,8 +18,8 @@ Widget userList(
             context,
             MaterialPageRoute(
                 builder: (context) => ChatRoomPage(
-                      friendId: userList[index].friendUid!,
-                      friendName: userList[index].friendName!,
+                      friendId: userList[index].userId!,
+                      friendName: userList[index].userName!,
                     )));
       },
       child: Card(
@@ -30,12 +30,12 @@ Widget userList(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(32.0),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    userList[index].friendIconUrl! == ''
+                    userList[index].iconUrl! == ''
                         ? toriUrl
-                        : userList[index].friendIconUrl!),
+                        : userList[index].iconUrl!),
               ),
             ),
             Column(
@@ -45,7 +45,7 @@ Widget userList(
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 0.0, vertical: 8.0),
-                  child: Text(userList[index].friendName!),
+                  child: Text(userList[index].userName!),
                 ),
                 //TODO: ダミー
                 Padding(

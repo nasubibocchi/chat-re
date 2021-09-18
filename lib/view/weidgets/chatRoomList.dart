@@ -12,8 +12,8 @@ Widget chatRoomList(
     required List<ChatRoom> chatRoomList,
     required int index}) {
   return Container(
-    height: 10.0,
-    width: 30.0,
+    height: 130.0,
+    width: 500.0,
     child: InkWell(
       /// カードをタップしたらチャットルームに移動する
       onTap: () {
@@ -33,10 +33,10 @@ Widget chatRoomList(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(32.0),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    chatRoomList[index].friendIconUrl! == ''
+                    chatRoomList[index].friendIconUrl == ''
                         ? toriUrl
                         : chatRoomList[index].friendIconUrl!),
               ),
@@ -50,10 +50,9 @@ Widget chatRoomList(
                       horizontal: 0.0, vertical: 8.0),
                   child: Text(chatRoomList[index].friendName!),
                 ),
-                //TODO: ダミー
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
-                  child: Text('ダミー'),
+                  child: Text(chatRoomList[index].message!),
                 ),
               ],
             ),
