@@ -5,6 +5,7 @@ import 'package:chat_re/main.dart';
 import 'package:chat_re/simplemodel/loginModel.dart';
 import 'package:chat_re/simplemodel/misc.dart';
 import 'package:chat_re/statemodel/loginStateModel.dart';
+import 'package:chat_re/view/serchUserPage.dart';
 import 'package:chat_re/view/weidgets/appbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -110,7 +111,7 @@ class LoginPage extends HookConsumerWidget {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => ChatRoomListPage()));
+                                                builder: (context) => SerchUserPage()));
                                       }),
                                     ),
                                   ),
@@ -139,7 +140,7 @@ class LoginPage extends HookConsumerWidget {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => ChatRoomListPage()));
+                                                builder: (context) => SerchUserPage()));
                                       }),
                                     ),
                                   ),
