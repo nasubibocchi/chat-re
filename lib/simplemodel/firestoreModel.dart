@@ -2,6 +2,7 @@ import 'package:chat_re/objects/chatroom.dart';
 import 'package:chat_re/objects/userData.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 class FirestoreModel {
   ///firebaseインスタンス
@@ -32,6 +33,7 @@ class FirestoreModel {
     return userList;
   }
 
+  ///メッセージを送る
   Future<void> postMessage({required String friendId,
     required String friendName,
     required String message}) async {
@@ -120,4 +122,5 @@ class FirestoreModel {
       'friendIconUrl': _myIconUrl,
     });
   }
+
 }
