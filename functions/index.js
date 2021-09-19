@@ -40,32 +40,37 @@ const pushMessage = (fcmToken, text) => ({
     token: fcmToken
 });
 
-///authenticationのuid
-const auth = functions.auth.user();
-const uid = auth.uid;
 
-///firestoreデータ
-const tokenRef = firestore.collection('users').doc(uid);
-const tokenGet = tokenRef.get();
-const token = tokenGet.docs.data()['fcmToken']
-
-const titleQuery = firestore.collection('users').doc(uid).collection('chatroom').orderBy('createdAt').get();
-const titleList = titleQuery.docs.map((e) => e.data()['message']);
-const title = titleList[0]; ///onUpdateされたら一番最新のやつが通知されてOKと仮定（検証必要）
-console.log(title);
-
-const checkIdList = titleQuery.docs.map((e) => e.data()['friendId']);
-const checkId = checkIdList[0];
-console.log(checkId);
 
 ///function
 exports.sendPush = functions.firestore
     .document('users/{userId}/chatroom/{friendId}')
     .onUpdate((change, context) => {
+
+        ///authenticationのuid
+        const auth = context.auth;
+        const uid = auth.uid;
+
+        ///firestoreデータ
+        const tokenRef = firestore.collection('users').doc(uid);
+        const tokenGet = tokenRef.get();
+        const token = tokenGet.docs.data()['fcmToken']
+
+        const titleQuery = firestore.collection('users').doc(uid).collection('chatroom').orderBy('createdAt').get();
+        const titleList = titleQuery.docs.map((e) => e.data()['message']);
+        const title = titleList[0]; ///onUpdateされたら一番最新のやつが通知されてOKと仮定（検証必要）
+        console.log(title);
+
+        const checkIdList = titleQuery.docs.map((e) => e.data()['friendId']);
+        const checkId = checkIdList[0];
+        console.log(checkId);
+
+
+
         ///最新メッセージが自分から送ったものでなければ通知実行
         if (checkId != uid) {
             admin.messaging().send(pushMessage(token, title));
-        } 
+        }
     });
 
 /* eslint-disable */
