@@ -75,23 +75,23 @@ class LoginPage extends HookConsumerWidget {
 
                                       ///google
                                       child: SignInWithGoogle(onPressed: () {
+                                        ///tokenの取得
+                                        ref
+                                            .read(tokenStateProvider.notifier)
+                                            .myGetToken();
+
                                         ///ログイン
                                         _loginModel.googleSignIn(
-                                            context: context,
-                                            startLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .startLoading(),
-                                            endLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .endLoading(),
-                                            dialogText: 'ログインしました。',
-                                            fcmToken: _fcmController.savedToken,
-                                            fcmTokenGet: () => ref
-                                                .read(
-                                                    tokenStateProvider.notifier)
-                                                .myGetToken());
+                                          context: context,
+                                          startLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .startLoading(),
+                                          endLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .endLoading(),
+                                          dialogText: 'ログインしました。',
+                                          fcmToken: _fcmController.savedToken,
+                                        );
 
                                         ///ページ遷移
                                         if (auth.currentUser != null) {
@@ -110,22 +110,23 @@ class LoginPage extends HookConsumerWidget {
 
                                       ///apple
                                       child: SignInWithApple(onPressed: () {
+                                        ///tokenの取得
+                                        ref
+                                            .read(tokenStateProvider.notifier)
+                                            .myGetToken();
+
+                                        ///ログイン
                                         _loginModel.appleSignIn(
-                                            context: context,
-                                            startLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .startLoading(),
-                                            endLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .endLoading(),
-                                            dialogText: 'ログインしました。',
-                                            fcmToken: _fcmController.savedToken,
-                                            fcmTokenGet: () => ref
-                                                .read(
-                                                    tokenStateProvider.notifier)
-                                                .myGetToken());
+                                          context: context,
+                                          startLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .startLoading(),
+                                          endLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .endLoading(),
+                                          dialogText: 'ログインしました。',
+                                          fcmToken: _fcmController.savedToken,
+                                        );
 
                                         ///ページ遷移
                                         if (auth.currentUser != null) {
@@ -146,23 +147,23 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithGoogle(onPressed: () {
+                                        ///tokenの取得
+                                        ref
+                                            .read(tokenStateProvider.notifier)
+                                            .myGetToken();
+
                                         ///ログイン
                                         _loginModel.googleSignIn(
-                                            context: context,
-                                            startLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .startLoading(),
-                                            endLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .endLoading(),
-                                            dialogText: 'ログインしました。',
-                                            fcmToken: _fcmController.savedToken,
-                                            fcmTokenGet: () => ref
-                                                .read(
-                                                    tokenStateProvider.notifier)
-                                                .myGetToken());
+                                          context: context,
+                                          startLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .startLoading(),
+                                          endLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .endLoading(),
+                                          dialogText: 'ログインしました。',
+                                          fcmToken: _fcmController.savedToken,
+                                        );
 
                                         ///ページ遷移
                                         if (auth.currentUser != null) {
@@ -184,23 +185,23 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithGoogle(onPressed: () {
+                                        ///tokenの取得
+                                        ref
+                                            .read(tokenStateProvider.notifier)
+                                            .myGetToken();
+
                                         ///ログイン
                                         _loginModel.googleSignIn(
-                                            context: context,
-                                            startLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .startLoading(),
-                                            endLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .endLoading(),
-                                            dialogText: '登録しました。',
-                                            fcmToken: _fcmController.savedToken,
-                                            fcmTokenGet: () => ref
-                                                .read(
-                                                    tokenStateProvider.notifier)
-                                                .myGetToken());
+                                          context: context,
+                                          startLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .startLoading(),
+                                          endLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .endLoading(),
+                                          dialogText: '登録しました。',
+                                          fcmToken: _fcmController.savedToken,
+                                        );
 
                                         ///ログインを促す
                                         _misc.showMyDialog(
@@ -213,23 +214,23 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithApple(onPressed: () {
+                                        ///tokenの取得
+                                        ref
+                                            .read(tokenStateProvider.notifier)
+                                            .myGetToken();
+
                                         ///ログイン
                                         _loginModel.appleSignIn(
-                                            context: context,
-                                            startLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .startLoading(),
-                                            endLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .endLoading(),
-                                            dialogText: '登録しました。',
-                                            fcmToken: _fcmController.savedToken,
-                                            fcmTokenGet: () => ref
-                                                .read(
-                                                    tokenStateProvider.notifier)
-                                                .myGetToken());
+                                          context: context,
+                                          startLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .startLoading(),
+                                          endLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .endLoading(),
+                                          dialogText: '登録しました。',
+                                          fcmToken: _fcmController.savedToken,
+                                        );
 
                                         ///ログインを促す
                                         _misc.showMyDialog(
@@ -246,23 +247,23 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithGoogle(onPressed: () {
+                                        ///tokenの取得
+                                        ref
+                                            .read(tokenStateProvider.notifier)
+                                            .myGetToken();
+
                                         ///ログイン
                                         _loginModel.googleSignIn(
-                                            context: context,
-                                            startLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .startLoading(),
-                                            endLoading: () => ref
-                                                .read(
-                                                    loginStateProvider.notifier)
-                                                .endLoading(),
-                                            dialogText: '登録しました。',
-                                            fcmToken: _fcmController.savedToken,
-                                            fcmTokenGet: () => ref
-                                                .read(
-                                                    tokenStateProvider.notifier)
-                                                .myGetToken());
+                                          context: context,
+                                          startLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .startLoading(),
+                                          endLoading: () => ref
+                                              .read(loginStateProvider.notifier)
+                                              .endLoading(),
+                                          dialogText: '登録しました。',
+                                          fcmToken: _fcmController.savedToken,
+                                        );
 
                                         ///ログインを促す
                                         _misc.showMyDialog(

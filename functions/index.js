@@ -7,6 +7,8 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
+const firestore = admin.firestore();
+
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
 
@@ -39,19 +41,22 @@ const pushMessage = (fcmToken, text) => ({
 });
 
 ///authenticationのuid
-const auth = context.auth;
+const auth = functions.auth.user();
 const uid = auth.uid;
 
 ///firestoreデータ
-const tokenRef = functions.firestore.collection('users').document(uid);
-const token = await tokenRef.get().docs.data()['fcmToken'];
+const tokenRef = firestore.collection('users').doc(uid);
+const tokenGet = tokenRef.get();
+const token = tokenGet.docs.data()['fcmToken']
 
-const titleQuery = await functions.firestore.collection('users').document(uid).collection('chatroom').orderBy('createdAt').get();
+const titleQuery = firestore.collection('users').doc(uid).collection('chatroom').orderBy('createdAt').get();
 const titleList = titleQuery.docs.map((e) => e.data()['message']);
 const title = titleList[0]; ///onUpdateされたら一番最新のやつが通知されてOKと仮定（検証必要）
+console.log(title);
 
 const checkIdList = titleQuery.docs.map((e) => e.data()['friendId']);
 const checkId = checkIdList[0];
+console.log(checkId);
 
 ///function
 exports.sendPush = functions.firestore

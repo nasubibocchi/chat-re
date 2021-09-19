@@ -22,13 +22,13 @@ class LogInModel {
   final _misc = Misc();
 
   ///google
-  Future<void> googleSignIn(
-      {required Function startLoading,
-      required Function endLoading,
-      required BuildContext context,
-      required String dialogText,
-      required String? fcmToken,
-      required Function fcmTokenGet}) async {
+  Future<void> googleSignIn({
+    required Function startLoading,
+    required Function endLoading,
+    required BuildContext context,
+    required String dialogText,
+    required String? fcmToken,
+  }) async {
     try {
       startLoading();
       final googleUser = await _googleSignIn.signIn(); //サインインメソッド
@@ -51,9 +51,6 @@ class LogInModel {
 
           ///ダイアログを表示
           await _misc.showMyDialog(context: context, text: dialogText);
-
-          ///fcmTokenを取得
-          fcmTokenGet();
 
           ///新規ユーザー
         } else {
@@ -92,13 +89,13 @@ class LogInModel {
   }
 
   ///apple
-  Future<void> appleSignIn(
-      {required Function startLoading,
-      required Function endLoading,
-      required BuildContext context,
-      required String dialogText,
-      required String? fcmToken,
-      required Function fcmTokenGet}) async {
+  Future<void> appleSignIn({
+    required Function startLoading,
+    required Function endLoading,
+    required BuildContext context,
+    required String dialogText,
+    required String? fcmToken,
+  }) async {
     try {
       startLoading();
 
@@ -132,9 +129,6 @@ class LogInModel {
 
         ///ダイアログを表示
         await _misc.showMyDialog(context: context, text: dialogText);
-
-        ///fcmTokenを取得
-        fcmTokenGet();
 
         ///新規ユーザー
       } else {
