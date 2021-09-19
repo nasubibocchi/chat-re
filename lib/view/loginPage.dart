@@ -4,6 +4,7 @@ import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/main.dart';
 import 'package:chat_re/simplemodel/loginModel.dart';
 import 'package:chat_re/simplemodel/misc.dart';
+import 'package:chat_re/statemodel/fcmModel.dart';
 import 'package:chat_re/statemodel/loginStateModel.dart';
 import 'package:chat_re/view/serchUserPage.dart';
 import 'package:chat_re/view/weidgets/appbar.dart';
@@ -22,8 +23,14 @@ class LoginPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ///firebase authenticationインスタンス
+    FirebaseAuth auth = FirebaseAuth.instance;
+
     ///google, appleのサインインモデル
     final _loginModel = LogInModel();
+
+    ///通知用のトークン監視
+    final _fcmController = ref.watch(tokenStateProvider);
 
     ///その他のモデル
     final _misc = Misc();
@@ -79,13 +86,21 @@ class LoginPage extends HookConsumerWidget {
                                                 .read(
                                                     loginStateProvider.notifier)
                                                 .endLoading(),
-                                            dialogText: 'ログインしました。');
+                                            dialogText: 'ログインしました。',
+                                            fcmToken: _fcmController.savedToken,
+                                            fcmTokenGet: () => ref
+                                                .read(
+                                                    tokenStateProvider.notifier)
+                                                .myGetToken());
 
                                         ///ページ遷移
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => ChatRoomListPage()));
+                                        if (auth.currentUser != null) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ChatRoomListPage()));
+                                        }
                                       }),
                                     ),
                                   ),
@@ -105,13 +120,21 @@ class LoginPage extends HookConsumerWidget {
                                                 .read(
                                                     loginStateProvider.notifier)
                                                 .endLoading(),
-                                            dialogText: 'ログインしました。');
+                                            dialogText: 'ログインしました。',
+                                            fcmToken: _fcmController.savedToken,
+                                            fcmTokenGet: () => ref
+                                                .read(
+                                                    tokenStateProvider.notifier)
+                                                .myGetToken());
 
                                         ///ページ遷移
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => SerchUserPage()));
+                                        if (auth.currentUser != null) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ChatRoomListPage()));
+                                        }
                                       }),
                                     ),
                                   ),
@@ -134,13 +157,21 @@ class LoginPage extends HookConsumerWidget {
                                                 .read(
                                                     loginStateProvider.notifier)
                                                 .endLoading(),
-                                            dialogText: 'ログインしました。');
+                                            dialogText: 'ログインしました。',
+                                            fcmToken: _fcmController.savedToken,
+                                            fcmTokenGet: () => ref
+                                                .read(
+                                                    tokenStateProvider.notifier)
+                                                .myGetToken());
 
                                         ///ページ遷移
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => SerchUserPage()));
+                                        if (auth.currentUser != null) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ChatRoomListPage()));
+                                        }
                                       }),
                                     ),
                                   ),
@@ -164,7 +195,12 @@ class LoginPage extends HookConsumerWidget {
                                                 .read(
                                                     loginStateProvider.notifier)
                                                 .endLoading(),
-                                            dialogText: '登録しました。');
+                                            dialogText: '登録しました。',
+                                            fcmToken: _fcmController.savedToken,
+                                            fcmTokenGet: () => ref
+                                                .read(
+                                                    tokenStateProvider.notifier)
+                                                .myGetToken());
 
                                         ///ログインを促す
                                         _misc.showMyDialog(
@@ -188,12 +224,17 @@ class LoginPage extends HookConsumerWidget {
                                                 .read(
                                                     loginStateProvider.notifier)
                                                 .endLoading(),
-                                            dialogText: '登録しました。');
+                                            dialogText: '登録しました。',
+                                            fcmToken: _fcmController.savedToken,
+                                            fcmTokenGet: () => ref
+                                                .read(
+                                                    tokenStateProvider.notifier)
+                                                .myGetToken());
 
                                         ///ログインを促す
                                         _misc.showMyDialog(
-                                                context: context,
-                                                text: 'ログインもお願いします');
+                                            context: context,
+                                            text: 'ログインもお願いします');
                                       }),
                                     ),
                                   ),
@@ -216,12 +257,17 @@ class LoginPage extends HookConsumerWidget {
                                                 .read(
                                                     loginStateProvider.notifier)
                                                 .endLoading(),
-                                            dialogText: '登録しました。');
+                                            dialogText: '登録しました。',
+                                            fcmToken: _fcmController.savedToken,
+                                            fcmTokenGet: () => ref
+                                                .read(
+                                                    tokenStateProvider.notifier)
+                                                .myGetToken());
 
                                         ///ログインを促す
                                         _misc.showMyDialog(
-                                                context: context,
-                                                text: 'ログインもお願いします');
+                                            context: context,
+                                            text: 'ログインもお願いします');
                                       }),
                                     ),
                                   ),

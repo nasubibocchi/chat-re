@@ -26,7 +26,9 @@ class LogInModel {
       {required Function startLoading,
       required Function endLoading,
       required BuildContext context,
-      required String dialogText}) async {
+      required String dialogText,
+      required String? fcmToken,
+      required Function fcmTokenGet}) async {
     try {
       startLoading();
       final googleUser = await _googleSignIn.signIn(); //サインインメソッド
@@ -50,6 +52,9 @@ class LogInModel {
           ///ダイアログを表示
           await _misc.showMyDialog(context: context, text: dialogText);
 
+          ///fcmTokenを取得
+          fcmTokenGet();
+
           ///新規ユーザー
         } else {
           try {
@@ -58,6 +63,9 @@ class LogInModel {
               'userId': value.user!.uid,
               'iconUrl': value.user!.photoURL ?? '',
               'signInAt': FieldValue.serverTimestamp(),
+
+              ///fcmTokenがない場合はここと引数を削除
+              'fcmToken': fcmToken,
             });
             await firestore
                 .collection('basicInfo')
@@ -88,7 +96,9 @@ class LogInModel {
       {required Function startLoading,
       required Function endLoading,
       required BuildContext context,
-      required String dialogText}) async {
+      required String dialogText,
+      required String? fcmToken,
+      required Function fcmTokenGet}) async {
     try {
       startLoading();
 
@@ -123,6 +133,9 @@ class LogInModel {
         ///ダイアログを表示
         await _misc.showMyDialog(context: context, text: dialogText);
 
+        ///fcmTokenを取得
+        fcmTokenGet();
+
         ///新規ユーザー
       } else {
         await firestore.collection('users').doc(uid).set(<String, dynamic>{
@@ -130,6 +143,9 @@ class LogInModel {
           'userId': uid,
           'iconUrl': '',
           'signInAt': FieldValue.serverTimestamp(),
+
+          ///fcmTokenがない場合はここと引数を削除
+          'fcmToken': fcmToken,
         });
         await firestore
             .collection('basicInfo')
