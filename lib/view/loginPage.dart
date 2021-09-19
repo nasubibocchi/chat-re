@@ -21,6 +21,9 @@ class LoginPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ///firebase authentication インスタンス
+    FirebaseAuth auth = FirebaseAuth.instance;
+
     ///google, appleのサインインモデル
     final _loginModel = LogInModel();
 
@@ -81,10 +84,13 @@ class LoginPage extends HookConsumerWidget {
                                             dialogText: 'ログインしました。');
 
                                         ///ページ遷移
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => ChatRoomListPage()));
+                                        if (auth.currentUser != null) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ChatRoomListPage()));
+                                        }
                                       }),
                                     ),
                                   ),
@@ -107,10 +113,13 @@ class LoginPage extends HookConsumerWidget {
                                             dialogText: 'ログインしました。');
 
                                         ///ページ遷移
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => ChatRoomListPage()));
+                                        if (auth.currentUser != null) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ChatRoomListPage()));
+                                        }
                                       }),
                                     ),
                                   ),
@@ -136,10 +145,13 @@ class LoginPage extends HookConsumerWidget {
                                             dialogText: 'ログインしました。');
 
                                         ///ページ遷移
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => ChatRoomListPage()));
+                                        if (auth.currentUser != null) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ChatRoomListPage()));
+                                        }
                                       }),
                                     ),
                                   ),
