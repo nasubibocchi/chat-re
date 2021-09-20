@@ -5,7 +5,7 @@ final loginStateProvider =
         (refs) => LoginStateModelState());
 
 class LoginStateModel {
-  LoginStateModel({required bool isLoginLoading});
+  LoginStateModel({required bool this.isLoginLoading});
 
   bool? isLoginLoading;
 }

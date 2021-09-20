@@ -16,6 +16,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'chatRoomListPage.dart';
 
+
 class LoginPage extends HookConsumerWidget {
   LoginPage({required this.index});
 
@@ -31,6 +32,7 @@ class LoginPage extends HookConsumerWidget {
 
     ///通知用のトークン監視
     final _fcmController = ref.watch(tokenStateProvider);
+    //ここでfcmModelを呼び出してもだめだった。
 
     ///その他のモデル
     final _misc = Misc();
@@ -75,10 +77,6 @@ class LoginPage extends HookConsumerWidget {
 
                                       ///google
                                       child: SignInWithGoogle(onPressed: () {
-                                        ///tokenの取得
-                                        ref
-                                            .read(tokenStateProvider.notifier)
-                                            .myGetToken();
 
                                         ///ログイン
                                         _loginModel.googleSignIn(
@@ -110,10 +108,6 @@ class LoginPage extends HookConsumerWidget {
 
                                       ///apple
                                       child: SignInWithApple(onPressed: () {
-                                        ///tokenの取得
-                                        ref
-                                            .read(tokenStateProvider.notifier)
-                                            .myGetToken();
 
                                         ///ログイン
                                         _loginModel.appleSignIn(
@@ -147,10 +141,7 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithGoogle(onPressed: () {
-                                        ///tokenの取得
-                                        ref
-                                            .read(tokenStateProvider.notifier)
-                                            .myGetToken();
+                                        ref.read(tokenStateProvider.notifier).myGetToken();
 
                                         ///ログイン
                                         _loginModel.googleSignIn(
@@ -185,10 +176,6 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithGoogle(onPressed: () {
-                                        ///tokenの取得
-                                        ref
-                                            .read(tokenStateProvider.notifier)
-                                            .myGetToken();
 
                                         ///ログイン
                                         _loginModel.googleSignIn(
@@ -214,10 +201,6 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithApple(onPressed: () {
-                                        ///tokenの取得
-                                        ref
-                                            .read(tokenStateProvider.notifier)
-                                            .myGetToken();
 
                                         ///ログイン
                                         _loginModel.appleSignIn(
@@ -247,10 +230,6 @@ class LoginPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: SignInWithGoogle(onPressed: () {
-                                        ///tokenの取得
-                                        ref
-                                            .read(tokenStateProvider.notifier)
-                                            .myGetToken();
 
                                         ///ログイン
                                         _loginModel.googleSignIn(
