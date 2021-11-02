@@ -1,7 +1,7 @@
 import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/objects/message.dart';
-import 'package:chat_re/simplemodel/firestoreModel.dart';
-import 'package:chat_re/view/weidgets/messageList.dart';
+import 'package:chat_re/simplemodel/firestore_model.dart';
+import 'package:chat_re/view/widgets/messageList.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';

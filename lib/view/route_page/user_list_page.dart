@@ -1,7 +1,8 @@
-import 'package:chat_re/objects/userData.dart';
-import 'package:chat_re/simplemodel/firestoreModel.dart';
-import 'package:chat_re/view/weidgets/appbar.dart';
-import 'package:chat_re/view/weidgets/userList.dart';
+
+import 'package:chat_re/objects/user_data.dart';
+import 'package:chat_re/simplemodel/firestore_model.dart';
+import 'package:chat_re/view/widgets/appbar.dart';
+import 'package:chat_re/view/widgets/user_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

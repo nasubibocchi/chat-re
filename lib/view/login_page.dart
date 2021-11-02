@@ -1,20 +1,18 @@
 import 'dart:io';
 
 import 'package:chat_re/constants/constants.dart';
-import 'package:chat_re/main.dart';
-import 'package:chat_re/simplemodel/loginModel.dart';
+import 'package:chat_re/simplemodel/login_model.dart';
 import 'package:chat_re/simplemodel/misc.dart';
 import 'package:chat_re/statemodel/fcmModel.dart';
 import 'package:chat_re/statemodel/loginStateModel.dart';
-import 'package:chat_re/view/serchUserPage.dart';
-import 'package:chat_re/view/weidgets/appbar.dart';
+import 'package:chat_re/view/widgets/appbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_buttons/flutter_awesome_buttons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'chatRoomListPage.dart';
+import 'chat_room_list_page.dart';
 
 
 class LoginPage extends HookConsumerWidget {

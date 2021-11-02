@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:chat_re/main.dart';
-import 'package:chat_re/objects/userData.dart';
+import 'package:chat_re/objects/user_data.dart';
 import 'package:chat_re/simplemodel/misc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypto/crypto.dart';
