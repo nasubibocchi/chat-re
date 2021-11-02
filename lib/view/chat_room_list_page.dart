@@ -1,11 +1,12 @@
-import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/objects/chatroom.dart';
-import 'package:chat_re/view/weidgets/appbar.dart';
-import 'package:chat_re/view/weidgets/chatRoomList.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/appbar.dart';
+import 'widgets/chat_room_list.dart';
 
 class ChatRoomListPage extends StatelessWidget {
   const ChatRoomListPage({Key? key}) : super(key: key);

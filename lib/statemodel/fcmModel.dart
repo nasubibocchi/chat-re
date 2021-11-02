@@ -7,7 +7,7 @@ StateNotifierProvider<FcmModelState, FcmModel>(
 
 
 class FcmModel {
-  FcmModel({required savedToken});
+  FcmModel({required this.savedToken});
   String? savedToken;
 }
 
@@ -18,7 +18,6 @@ class FcmModelState extends StateNotifier<FcmModel> {
     FirebaseMessaging.instance.getToken().then((token){
       assert(token != null);
       state = FcmModel(savedToken: token);
-      print(token);
       // setState(() {
       //   _token = token!;
       //   exportedToken = token;

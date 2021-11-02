@@ -1,12 +1,11 @@
 import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/simplemodel/misc.dart';
-import 'package:chat_re/statemodel/serchUserPageViewModel.dart';
-import 'package:chat_re/view/weidgets/appbar.dart';
+import 'package:chat_re/view/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'pushPage/userListPage.dart';
+import 'route_page/user_list_page.dart';
 
 class SerchUserPage extends HookConsumerWidget {
   ///変数

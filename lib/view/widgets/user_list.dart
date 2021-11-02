@@ -1,8 +1,9 @@
-import 'package:chat_re/objects/userData.dart';
-import 'package:chat_re/view/pushPage/chatRoomPage.dart';
-import 'package:chat_re/view/weidgets/chatRoomList.dart';
+import 'package:chat_re/objects/user_data.dart';
+import 'package:chat_re/view/route_page/chat_room_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'chat_room_list.dart';
 
 Widget userList(
     {required BuildContext context,

@@ -1,8 +1,5 @@
 import 'package:chat_re/constants/constants.dart';
 import 'package:chat_re/statemodel/fcmModel.dart';
-import 'package:chat_re/view/chatRoomListPage.dart';
-import 'package:chat_re/view/loginPage.dart';
-import 'package:chat_re/view/serchUserPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,6 +9,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
+import 'view/chat_room_list_page.dart';
+import 'view/login_page.dart';
+import 'view/serch_user_page.dart';
 
 ///FCMの設定
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -53,6 +54,7 @@ Future<void> main() async {
 
   runApp(ProviderScope(child: MyApp()));
 }
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:chat_re/main.dart';
-import 'package:chat_re/objects/userData.dart';
+import 'package:chat_re/objects/user_data.dart';
 import 'package:chat_re/simplemodel/misc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypto/crypto.dart';
@@ -22,11 +21,13 @@ class LogInModel {
   final _misc = Misc();
 
   ///google
-  Future<void> googleSignIn(
-      {required Function startLoading,
-      required Function endLoading,
-      required BuildContext context,
-      required String dialogText}) async {
+  Future<void> googleSignIn({
+    required Function startLoading,
+    required Function endLoading,
+    required BuildContext context,
+    required String dialogText,
+    required String? fcmToken,
+  }) async {
     try {
       startLoading();
       final googleUser = await _googleSignIn.signIn(); //サインインメソッド
@@ -58,6 +59,9 @@ class LogInModel {
               'userId': value.user!.uid,
               'iconUrl': value.user!.photoURL ?? '',
               'signInAt': FieldValue.serverTimestamp(),
+
+              ///fcmTokenがない場合はここと引数を削除
+              'fcmToken': fcmToken,
             });
             await firestore
                 .collection('basicInfo')
@@ -84,11 +88,13 @@ class LogInModel {
   }
 
   ///apple
-  Future<void> appleSignIn(
-      {required Function startLoading,
-      required Function endLoading,
-      required BuildContext context,
-      required String dialogText}) async {
+  Future<void> appleSignIn({
+    required Function startLoading,
+    required Function endLoading,
+    required BuildContext context,
+    required String dialogText,
+    required String? fcmToken,
+  }) async {
     try {
       startLoading();
 
@@ -130,6 +136,9 @@ class LogInModel {
           'userId': uid,
           'iconUrl': '',
           'signInAt': FieldValue.serverTimestamp(),
+
+          ///fcmTokenがない場合はここと引数を削除
+          'fcmToken': fcmToken,
         });
         await firestore
             .collection('basicInfo')
